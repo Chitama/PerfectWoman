@@ -1,0 +1,243 @@
+{% load staticfiles %}
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Perfect Women</title>
+  <meta charset="utf-8">
+  <link href="{% static 'css/bootstrap.css' %}" rel='stylesheet' type='text/css' />
+  <link href="{% static 'css/font-awesome.min.css' %}" rel='stylesheet' />
+  <link href="{% static 'images/favicon.ico' %}" type="favicon.ico" rel="shortcut icon" />
+
+<!-- here linked script
+<script src="js/jquery.min.js"></script>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event){
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1200);
+		});
+	});
+</script>
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900' rel='stylesheet' type='text/css'>
+</script>
+-->
+  <link href="https://npmcdn.com/basscss@8.0.1/css/basscss.min.css" rel="stylesheet">
+  <link href="{% static 'css/awesome-bootstrap-checkbox.css' %}" rel='stylesheet' />
+  <link href="{% static 'css/style.css' %}" rel='stylesheet' type='text/css' />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<!-- header -->
+<!--   <div class="header">
+    <div class="container">
+      <div class="logo">
+        <a href="#promo">
+          <ul>
+            <li><img src="images/logo.png"></li>
+            <li><h2>Perfect Women</h2></li>
+          </ul>
+        </a>
+      </div>
+    </div>
+      <div class="clearfix">
+      </div>
+  </div> -->
+
+  <section class="hero text-center">
+    <div class="container">
+      <div class="hero-info">
+        <h1>Perfect Women</h1>
+        <h2>〜なりたい自分への近道〜</h2>
+        <p>簡単なセルフデータを入力するだけ。<br />
+        あなただけの The Perfect Recipe をお教えします</p>
+        <label class="page-scroll"><a class="hero-btn class scroll" href="#feature"><i class="fa fa-angle-double-down fa-4x" style="color: rgba(0,0,0,0.3);"></i></a></label>
+      </div>
+    </div>
+  </section>
+
+  <section class="py4 center">
+    <h2 class="mb2">こんな悩み、ありませんか？</h2>
+    <p>『自分に合うスキンケア商品が分からない……』</p>
+    <p>『肌が弱くて、荒れないか心配……』</p>
+  </section>
+
+  <section class="featured_content py4" id="feature">
+    <div class="container">
+      <div class="row text-center">
+        <div class="col-xs-6 col-sm-4"> <i class="fa fa-flask fa-3x"></i>
+          <h3 class="m_1">口コミだけじゃない！</h3>
+          <p>口コミサイトの情報があなたに自分に合うかはわからない！科学的根拠からオススメを表示。</p>
+        </div>
+        <div class="col-xs-6 col-sm-4"> <i class="fa fa-bar-chart fa-3x"></i>
+          <h3 class="m_1">膨大なデータ量！</h3>
+          <p>スキンケアからメイクの成分まで細かく分析！買ってからの「失敗した〜…」を減らそう!!</p>
+        </div>
+        <div class="col-xs-6 col-sm-4"> <i class="fa fa-check fa-3x"></i>
+          <h3 class="m_1">とっても簡単！</h3>
+          <p>知りたい項目、肌質、アレルギー等をチェックしていくだけ！たくさんのデータの中からあなただけの Perfect Recipe をレコメンド。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="py4">
+    <div class="container center">
+      <div class="content_white">
+        <h2>簡単なセルフデータを入力するだけ</h2>
+        <p>あなただけの The Perfect Recipe をお教えします</p>
+      </div>
+    </div>
+  <!-- checkbox -->
+  <div class="container max-width-3">
+    <div class="row checkbox_top">
+      <h4><i class="fa fa-lightbulb-o fa-2x h2 ml2"><span class="inline-block ml2">知りたいものは？</span></i></h4>
+    </div>
+
+{% csrf_token %}
+{% for cItem in category.choice_set.all %}
+    <input type="checkbox" name="cItem" id="cItem{{ forloop.counter }}" value="{{ cItem.id }}" />
+    <label for="cItem{{ forloop.counter }}">{{ cItem.category }}</label><br />
+{% endfor %}
+
+    <div class="checkbox checkbox-inline checkbox-primary">
+      <input type="checkbox" class="styled" id="inlineCheckbox1" value="option1">
+      <label for="inlineCheckbox1">化粧水</label>
+    </div>
+    <div class="checkbox checkbox-inline checkbox-primary">
+      <input type="checkbox" class="styled" id="inlineCheckbox2" value="option2">
+      <label for="inlineCheckbox2">洗顔料</label>
+    </div>
+    <div class="checkbox checkbox-inline checkbox-primary">
+      <input type="checkbox" class="styled" id="inlineCheckbox3" value="option3">
+      <label for="inlineCheckbox3">シャンプー</label>
+    </div>
+    <div class="checkbox checkbox-inline checkbox-primary">
+      <input type="checkbox" class="styled" id="inlineCheckbox4" value="option4">
+      <label for="inlineCheckbox4">コンディショナー</label>
+    </div>
+    <div class="checkbox checkbox-inline checkbox-primary">
+      <input type="checkbox" class="styled" id="inlineCheckbox5" value="option5">
+      <label for="inlineCheckbox5">ファンデーション</label>
+    </div>
+
+    <div class="row checkbox_mdl">
+      <h4><i class="fa fa-lightbulb-o fa-2x h2 ml2"><span class="inline-block ml2">肌質は？</span></i></h4>
+    </div>
+
+    <div class="checkbox checkbox-inline checkbox-primary">
+      <input type="checkbox" class="styled" id="inlineCheckbox6" value="option1">
+      <label for="inlineCheckbox6">脂性肌</label>
+    </div>
+    <div class="checkbox checkbox-inline checkbox-primary">
+      <input type="checkbox" class="styled" id="inlineCheckbox7" value="option2">
+      <label for="inlineCheckbox7">感想肌</label>
+    </div>
+    <div class="checkbox checkbox-inline checkbox-primary">
+      <input type="checkbox" class="styled" id="inlineCheckbox8" value="option3">
+      <label for="inlineCheckbox8">混合肌</label>
+    </div>
+    <div class="checkbox checkbox-inline checkbox-primary">
+      <input type="checkbox" class="styled" id="inlineCheckbox9" value="option4">
+      <label for="inlineCheckbox9">敏感肌</label>
+    </div>
+    <div class="checkbox checkbox-inline checkbox-primary">
+      <input type="checkbox" class="styled" id="inlineCheckbox10" value="option5">
+      <label for="inlineCheckbox10">アトピー肌</label>
+    </div>
+
+    <div class="row checkbox_low">
+      <h4><i class="fa fa-lightbulb-o fa-2x h2 ml2"><span class="inline-block ml2">アレルギーは？</span></i></h4>
+    </div>
+
+    <div class="checkbox checkbox-inline checkbox-primary">
+      <input type="checkbox" class="styled" id="inlineCheckbox11" value="option1">
+      <label for="inlineCheckbox11">花粉症</label>
+    </div>
+    <div class="checkbox checkbox-inline checkbox-primary">
+      <input type="checkbox" class="styled" id="inlineCheckbox12" value="option2">
+      <label for="inlineCheckbox12">ハウスダスト</label>
+    </div>
+    <div class="checkbox checkbox-inline checkbox-primary">
+      <input type="checkbox" class="styled" id="inlineCheckbox13" value="option3">
+      <label for="inlineCheckbox13">金属</label>
+    </div>
+    <div class="checkbox checkbox-inline checkbox-primary">
+      <input type="checkbox" class="styled" id="inlineCheckbox14" value="option4">
+      <label for="inlineCheckbox14">動物</label>
+    </div>
+    <div class="checkbox checkbox-inline checkbox-primary">
+      <input type="checkbox" class="styled" id="inlineCheckbox15" value="option5">
+      <label for="inlineCheckbox15">卵</label>
+    </div>
+    <div class="checkbox checkbox-inline checkbox-primary">
+      <input type="checkbox" class="styled" id="inlineCheckbox16" value="option1">
+      <label for="inlineCheckbox16">乳</label>
+    </div>
+    <div class="checkbox checkbox-inline checkbox-primary">
+      <input type="checkbox" class="styled" id="inlineCheckbox17" value="option2">
+      <label for="inlineCheckbox17">小麦</label>
+    </div>
+    <div class="checkbox checkbox-inline checkbox-primary">
+      <input type="checkbox" class="styled" id="inlineCheckbox18" value="option3">
+      <label for="inlineCheckbox18">そば</label>
+    </div>
+    <div class="checkbox checkbox-inline checkbox-primary">
+      <input type="checkbox" class="styled" id="inlineCheckbox19" value="option4">
+      <label for="inlineCheckbox19">落花生</label>
+    </div>
+    <div class="checkbox checkbox-inline checkbox-primary">
+      <input type="checkbox" class="styled" id="inlineCheckbox20" value="option5">
+      <label for="inlineCheckbox20">えび</label>
+    </div>
+    <div class="checkbox checkbox-inline checkbox-primary">
+      <input type="checkbox" class="styled" id="inlineCheckbox21" value="option5">
+      <label for="inlineCheckbox21">かに</label>
+    </div>
+
+  </div><!-- ./container checkbox -->
+
+    <div class="container my3 center">
+      <div class="checkbox_bottom">
+        <p><button type="button" class="btn btn-primary btn-lg">CHECK!!</button></p>
+      </div>
+    </div>
+  </section>
+
+<!-- footer -->
+  <footer class="footer">
+    <div class="footer_midle">
+      <div class="container">
+        <ul class="row sns-list">
+          <li class="col-md-3 sns-list__item">
+              <i class="fa fa-facebook-square fa-3x inline"></i>
+              <h4 class="inline"><a href="#">Follow us on Facebook</a></h4>
+          </li>
+          <li class="col-md-3 sns-list__item">
+              <i class="fa fa-twitter-square fa-3x"></i>
+              <h4 class="inline"><a href="#">Follow us on Twitter</a></h4>
+
+          </li>
+          <li class="col-md-3 sns-list__item">
+              <i class="fa fa-google-plus-square fa-3x"></i>
+              <h4 class="inline"><a href="#">Follow us on Google +</a></h4>
+
+          </li>
+          <li class="col-md-3 sns-list__item">
+              <i class="fa fa-linkedin-square fa-3x"></i>
+              <h4 class="inline"><a href="#">Follow us on LinkedIn</a></h4>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer_bottom">
+      <div class="copy">
+        <p>Copyright &copy; 2015 Team Himi's</p>
+      </div>
+    </div>
+  </footer>
+
+  </body>
+</html>
