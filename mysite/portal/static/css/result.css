@@ -1,0 +1,64 @@
+html, body {
+	font-size: 16px;
+	line-height: 1.8;
+	font-family:  "Open Sans" ,'Helvetica Neue', Helvetica, Arial, 游ゴシック, YuGothic, 'ヒラギノ角ゴ ProN W3', 'Hiragino Kaku Gothic ProN', メイリオ, Meiryo, sans-serif;
+	background-color: #fff;
+}
+
+body {
+	padding: 5rem 0;
+}
+
+.item-box {
+	margin-bottom: 5rem;
+}
+
+.item-img {
+	height: 200px;
+  margin: 0 auto;
+  display: block;
+}
+
+.img-wrapper {
+	position: relative;
+	border: solid 1px #eee;
+	margin-bottom: 1rem;
+}
+
+.item-tag {
+  position: absolute;
+  background-color: #eee;
+  padding: 0 0.5rem;
+  font-size: 0.8rem;
+}
+
+.item-category {
+	position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  font-size: 0.8rem;
+  border: solid 1px #eee;
+  background-color: #fff;
+  padding: 0 0.5rem;
+}
+
+.item-price {
+	float: right;
+	font-size: 0.8rem;
+}
+
+.maker-name {
+	display: block;
+}
+
+.item-name {
+	font-size: 1.4rem;
+}
+
+.hashtags {
+	color: #aaa;
+}
+
+.ingredients {
+	color: rgba(233, 30, 99, 0.41);
+}
