@@ -62,3 +62,77 @@ body {
 .ingredients {
 	color: rgba(233, 30, 99, 0.41);
 }
+
+.form-container {
+	    max-width: 720px;
+}
+
+.bubble {
+  border: solid 5px #eee;
+  border-radius: 15px;
+  margin-bottom: 2rem;
+}
+
+.bubble.question {
+	padding: 1rem;
+	margin-right: 20%;
+}
+
+.bubble.answer {
+	margin-left: 20%;
+}
+
+.answer-btn {
+	padding: 0.75rem 1rem;
+  border-bottom: solid 3px #eee;
+  text-align: center;
+}
+
+.answer-checkbox {
+	padding: 0.25rem 1rem;
+	background-color: #eee;
+  display: inline-block;
+  border-radius: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+
+.answer-checkbox:hover,
+.answer-checkbox.is-selected {
+	background-color: rgba(233, 30, 99, 0.41);
+	cursor: pointer;
+}
+
+.answer-btn:last-child {
+	border-bottom: 0;
+}
+
+.answer-btn-selectable:hover,
+.answer-btn-selectable.is-selected {
+	background-color: #eee;
+	cursor: pointer;
+}
+
+.answer-textarea {
+    border: 0;
+    width: 100%;
+}
+
+::-webkit-input-placeholder {
+	color: rgba(233, 30, 99, 0.41);
+}
+
+::-moz-placeholder {
+	color: rgba(233, 30, 99, 0.41);
+}
+
+:-ms-input-placeholder {
+	color: rgba(233, 30, 99, 0.41);
+}
+
+.is-hidden {
+	display: none;
+}
+
+
+
