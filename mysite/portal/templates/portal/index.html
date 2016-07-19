@@ -201,7 +201,13 @@
 
     <div class="container my3 center">
       <div class="checkbox_bottom">
-        <p><button type="button" class="btn btn-primary btn-lg">CHECK!!</button></p>
+        <p><a href="{% url 'portal:result'  %}"><button type="button" class="btn btn-primary btn-lg">CHECK!!</button></a></p>
+      </div>
+    </div>
+
+    <div class="container my3 center">
+      <div class="checkbox_bottom">
+        <p><a href="{% url 'portal:form' %}"><button type="button" class="btn btn-primary btn-lg">もっと詳しく探す</button></a></p>
       </div>
     </div>
   </section>

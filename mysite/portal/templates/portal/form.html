@@ -1,12 +1,13 @@
-<!-- {% load staticfiles %} -->
+{% load staticfiles %}
+
 <!DOCTYPE HTML>
 <html>
 <head>
 <title>Perfect Women</title>
   <meta charset="utf-8">
-  <link href="../../static/css/bootstrap.css" rel='stylesheet' type='text/css' />
-  <link href="../../static/css/font-awesome.min.css" rel='stylesheet' />
-  <link href="../../static/images/favicon.ico" type="favicon.ico" rel="shortcut icon" />
+  <link href="{% static 'css/bootstrap.css' %}" rel='stylesheet' type='text/css' />
+  <link href="{% static 'css/font-awesome.min.css' %}" rel='stylesheet' />
+  <link href="{% static 'images/favicon.ico' %}" type="favicon.ico" rel="shortcut icon" />
 
 <!-- here linked script
 <script src="js/jquery.min.js"></script>
@@ -24,8 +25,8 @@
 -->
   <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
   <link href="https://npmcdn.com/basscss@8.0.1/css/basscss.min.css" rel="stylesheet">
-  <link href="../../static/css/awesome-bootstrap-checkbox.css" rel='stylesheet' />
-  <link href="../../static/css/result.css" rel='stylesheet' type='text/css' />
+  <link href="{% static 'css/awesome-bootstrap-checkbox.css' %}" rel='stylesheet' />
+  <link href="{% static 'css/result.css' %}" rel='stylesheet' type='text/css' />
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <script>
