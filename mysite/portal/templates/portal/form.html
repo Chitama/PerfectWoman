@@ -24,22 +24,27 @@
 </script>
 -->
   <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
   <link href="https://npmcdn.com/basscss@8.0.1/css/basscss.min.css" rel="stylesheet">
   <link href="{% static 'css/awesome-bootstrap-checkbox.css' %}" rel='stylesheet' />
   <link href="{% static 'css/result.css' %}" rel='stylesheet' type='text/css' />
+  <script src="{% static 'js/jquery.pjax.min.js' %}" ></script>
+  <script src="{% static 'js/pjax.js' %}" ></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <script>
     $(function(){
-
+      pjax();
       $('.js-q-choices .answer-btn-selectable').on('click', function(){
-        $('.js-q-choices .answer-btn-selectable').removeClass('is-selected');
+        $(this).parent().children().removeClass('is-selected');
+        // $('.js-q-choices .answer-btn-selectable').removeClass('is-selected');
         $(this).addClass('is-selected');
-        $($(this).parent().attr('data-next')).fadeIn(1000, function(){
-          $('html, body').animate({
-            scrollTop: $(this).offset().top
-          }, 1000);
+        $($(this).parent().attr('data-next')).fadeIn(800, function(){
         });
+        $('html, body').animate({
+            scrollTop: $(this).offset().top + 80
+          }, 1200);
         $($(this).parent().attr('data-hidden-field')).val($(this).text());
       })
 
@@ -53,34 +58,49 @@
           .get()
           .join(',');
 
-        $('.js-q4-answer').val(val);
+        $('.js-q3-answer').val(val);
       });
 
       $('.js-next').on('click', function(){
-        $($(this).attr('data-next')).fadeIn(1000, function(){
-          $('html, body').animate({
-            scrollTop: $(this).offset().top
-          }, 1000);
+        $($(this).attr('data-next')).fadeIn(800, function(){
         });
+        $('html, body').animate({
+            scrollTop: $(this).offset().top
+        }, 1200);
       })
 
       $('.js-q-final .answer-btn-selectable').on('click', function(){
         $('.js-submit-btn').fadeIn();
       })
 
+      $('#js-submit').on('click', function(){
+        $('.overlay').removeClass('is-hidden');
+      })
+
     });
   </script>
 </head>
-  <body>
-  <header></header>
-  <p></p>
+  <body class="js-pjax">
+  <div class="overlay is-hidden">
+    <p class="overlay-text">独自のアルゴリズムで、あなたにおすすめ商品を探しています。</p>
+  </div>
+  <header class="jumbotron text-center">
+
+    <i class="material-icons">account_circle</i>
+    <h1 class="service-title">PERFECT WOMAN</h1>
+    <p>
+    12000件の商品から、あなたにピッタリの基礎化粧品をお探します。
+    </p>
+  </header>
 
   <div class="container form-container">
-    <form>
-
+    <form action="../result.html">
       <div class="js-q1">
-        <div class="bubble question">
-          お探しの商品はなんでしょう？
+        <div class="q">
+          <i class="material-icons">account_circle</i>
+          <div class="bubble question">
+            お探しの商品はなんでしょう？
+          </div>
         </div>
         <input type="hidden" value="" class="js-q1-answer" name="q1-answer"/>
         <div class="bubble answer js-q-choices" data-hidden-field=".js-q1-answer" data-next=".js-q2">
@@ -93,8 +113,11 @@
       </div>
 
       <div class="js-q2 is-hidden">
-        <div class="bubble question">
-          お探しの商品はなんでしょう？
+        <div class="q">
+          <i class="material-icons">account_circle</i>
+          <div class="bubble question">
+            あなたの肌質を教えて下さい。
+        </div>
         </div>
         <input type="hidden" value="" class="js-q2-answer" name="q2-answer"/>
         <div class="bubble answer js-q-choices" data-hidden-field=".js-q2-answer" data-next=".js-q3">
@@ -107,58 +130,52 @@
       </div>
 
       <div class="js-q3 is-hidden">
-        <div class="bubble question">
-          お探しの商品はなんでしょう？
+        <div class="q">
+          <i class="material-icons">account_circle</i>
+          <div class="bubble question">
+            解決したいお悩みは？
+          </div>
         </div>
         <input type="hidden" value="" class="js-q3-answer" name="q3-answer"/>
-        <div class="bubble answer js-q-choices" data-hidden-field=".js-q3-answer" data-next=".js-q4">
-          <div class="answer-btn answer-btn-selectable">乾燥肌</div>
-          <div class="answer-btn answer-btn-selectable">普通肌</div>
-          <div class="answer-btn answer-btn-selectable">混合肌</div>
-          <div class="answer-btn answer-btn-selectable">敏感肌</div>
-          <div class="answer-btn answer-btn-selectable">敏感肌</div>
-        </div>
-      </div>
-
-      <div class="js-q4 is-hidden">
-        <div class="bubble question">
-          お探しの商品はなんでしょう？
-        </div>
-        <input type="hidden" value="" class="js-q4-answer" name="q4-answer"/>
         <div class="bubble answer multi-answer js-q-checkbox">
           <div class="answer-btn">
             <span class="answer-checkbox">#乾燥が気になる</span>
             <span class="answer-checkbox">#美白</span>
             <span class="answer-checkbox">#ニキビ</span>
-            <span class="answer-checkbox">#敏感肌</span>
-            <span class="answer-checkbox">#乾燥が気になる</span>
-            <span class="answer-checkbox">#美白</span>
-            <span class="answer-checkbox">#ニキビ</span>
-            <span class="answer-checkbox">#敏感肌</span>
+            <span class="answer-checkbox">#肌がピリピリする</span>
+            <span class="answer-checkbox">#たるみ</span>
+            <span class="answer-checkbox">#ほうれい線</span>
+            <span class="answer-checkbox">#くすみを取りたい</span>
             </div>
+          <div class="answer-btn answer-btn-selectable js-next" data-next=".js-q4">つぎへ進む</div>
+        </div>
+      </div>
+
+      <div class="js-q4 is-hidden">
+        <div class="q">
+          <i class="material-icons">account_circle</i>
+          <div class="bubble question">
+            入ってほしくない成分はありますか？
+          </div>
+        </div>
+        <div class="bubble answer">
+          <div class="answer-btn">
+            <textarea class="answer-textarea" placeholder="入って欲しくない成分を入力してください。" rows="3" name="q4-answer"></textarea>
+          </div>
           <div class="answer-btn answer-btn-selectable js-next" data-next=".js-q5">つぎへ進む</div>
         </div>
       </div>
 
       <div class="js-q5 is-hidden">
-        <div class="bubble question">
-          入ってほしくない成分はありますか？
-        </div>
-        <div class="bubble answer">
-          <div class="answer-btn">
-            <textarea class="answer-textarea" placeholder="入って欲しくない成分を入力してください。" rows="3" name="q5-answer"></textarea>
+        <div class="q">
+          <i class="material-icons">account_circle</i>
+          <div class="bubble question">
+            年齢を教えてください。
           </div>
-          <div class="answer-btn answer-btn-selectable js-next" data-next=".js-q6">つぎへ進む</div>
         </div>
-      </div>
-
-      <div class="js-q6 is-hidden">
-        <div class="bubble question">
-          年齢を教えてください。
-        </div>
-        <input type="hidden" value="" class="js-q6-answer" name="q6-answer"/>
-        <div class="bubble answer js-q-choices js-q-final" data-hidden-field=".js-q6-answer">
-          <div class="answer-btn answer-btn-selectable">20~23歳</div>
+        <input type="hidden" value="" class="js-q5-answer" name="q5-answer"/>
+        <div class="bubble answer js-q-choices js-q-final" data-hidden-field=".js-q5-answer">
+          <div class="answer-btn answer-btn-selectable">20歳~23歳</div>
           <div class="answer-btn answer-btn-selectable">24歳~27歳</div>
           <div class="answer-btn answer-btn-selectable">28歳~31歳</div>
           <div class="answer-btn answer-btn-selectable">32歳~35歳</div>
@@ -166,9 +183,20 @@
         </div>
       </div>
 
-      <input type="submit" class="btn btn-primary is-hidden js-submit-btn" />
+      <div class="form-container text-center btn-wrapper">
+      <!-- 
+        <input type="submit" id="js-submit"
+               class="btn btn-lg btn-primary is-hidden js-submit-btn text-center"
+               value="結果をみる"/>  -->
+        <a href="/portal/result/"
+               class="btn btn-lg btn-primary is-hidden js-submit-btn text-center js-submit">結果をみる</a>
+      </div>
     </form>
   </div>
-
+<!--   <footer class="footer">
+      <div class="copy">
+        <p>Copyright &copy; 2015 Team Himi's</p>
+      </div>
+  </footer> -->
   </body>
 </html>
